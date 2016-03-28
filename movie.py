@@ -40,8 +40,8 @@ def movieData():
         movie_data['cast'] = movie_cast[0]
         movie_data['director'] = movie_director_duration[0]
         movie_data['duration'] = movie_director_duration[1]
-        movie_data['description'] = movie_description[0]
-        movie_data['cover'] = (movie_cover.group(1)).replace("<br \/>\r\n", "")
+        movie_data['description'] = movie_description[0].replace('<br />', '')
+        movie_data['cover'] = movie_cover.group(1)
         movie_data['url'] = movie_row_url[:5]
         if len(movie_data) > 0:
             result.append(movie_data)
