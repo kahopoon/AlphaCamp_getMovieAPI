@@ -35,10 +35,12 @@ def movieData():
         movie_cover = re.search('<img src="/assets/poster/' + '(.+?)' + '.jpg"', movie_row_html_data)
         movie_cast = re.findall('<dd class="long">' + '(.+?)' + '</dd>', movie_row_html_data, re.DOTALL)
         movie_director_duration = re.findall('<dd>' + '(.+?)' + '</dd>', movie_row_html_data, re.DOTALL)
+        movie_description = re.findall('<p class="description">' + '(.+?)' + '</p>', movie_row_html_data, re.DOTALL)
         movie_data['name'] = movie_row_url[6:]
         movie_data['cast'] = movie_cast[0]
         movie_data['director'] = movie_director_duration[0]
         movie_data['duration'] = movie_director_duration[1]
+        movie_data['description'] = movie_description[0]
         movie_data['cover'] = movie_cover.group(1)
         movie_data['url'] = movie_row_url[:5]
         if len(movie_data) > 0:
